@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84760b61eca1bcf4883d3d30cf6d8652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Log: {fileID: 0}
+  Log: {fileID: 1040019554}
 --- !u!114 &189594450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,11 +253,11 @@ MonoBehaviour:
   Width: 450
   Height: 350
   Padding:
-    m_Left: 0
+    m_Left: 10
     m_Right: 0
-    m_Top: 0
+    m_Top: 6
     m_Bottom: 0
-  LevelDistance: 0
+  LevelDistance: 4
   BackgroundColor: {r: 0, g: 0, b: 0, a: 0.65}
   NodeMargin:
     m_Left: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  NodeFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  NodeFont: {fileID: 12800000, guid: 5af246a608a7bf54ead5c34cc420f0da, type: 3}
   NodeFontSize: 24
   NodeTextAnchor: 3
   NormalENodeView:
@@ -300,7 +300,7 @@ MonoBehaviour:
     NotLast: 9500
     ParentIsLast: 32
     ParentIsNotLast: 9474
-    Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    Font: {fileID: 12800000, guid: 5af246a608a7bf54ead5c34cc420f0da, type: 3}
     FontSize: 24
     Width: 16
     Height: 20
@@ -354,7 +354,7 @@ MonoBehaviour:
     NotLast: 9500
     ParentIsLast: 32
     ParentIsNotLast: 9474
-    Font: {fileID: 0}
+    Font: {fileID: 12800000, guid: 5af246a608a7bf54ead5c34cc420f0da, type: 3}
     FontSize: 24
     Width: 16
     Height: 20
@@ -784,8 +784,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 10, y: 10}
-  m_SizeDelta: {x: 160, y: 10}
-  m_Pivot: {x: 0, y: 1}
+  m_SizeDelta: {x: 300, y: 20}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1040019554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,7 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -807,13 +807,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 11
+    m_Font: {fileID: 12800000, guid: 5af246a608a7bf54ead5c34cc420f0da, type: 3}
+    m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -944,7 +944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d49b853f1aa7347ae210bb53e5ada9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeviews: []
+  treeviews:
+  - {fileID: 189594448}
 --- !u!1 &1379109532
 GameObject:
   m_ObjectHideFlags: 0
