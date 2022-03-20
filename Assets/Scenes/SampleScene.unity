@@ -567,7 +567,7 @@ MonoBehaviour:
     NotLast: 9500
     ParentIsLast: 32
     ParentIsNotLast: 9474
-    Font: {fileID: 0}
+    Font: {fileID: 12800000, guid: 5af246a608a7bf54ead5c34cc420f0da, type: 3}
     FontSize: 24
     Width: 16
     Height: 20
@@ -879,6 +879,219 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887810352}
   m_CullTransparentMesh: 1
+--- !u!1 &909249277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 909249278}
+  - component: {fileID: 909249280}
+  - component: {fileID: 909249279}
+  m_Layer: 0
+  m_Name: Chicken Glyphs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &909249278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909249277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 116.34311, y: 113.265594, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &909249279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909249277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84760b61eca1bcf4883d3d30cf6d8652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Log: {fileID: 1040019554}
+--- !u!114 &909249280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909249277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab92b9f6c0c39246aa3eb09cf82fdbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayInInspector: 0
+  DisplayInGame: 1
+  DisplayInScene: 1
+  X: 10
+  Y: 10
+  Width: 450
+  Height: 350
+  Padding:
+    m_Left: 10
+    m_Right: 0
+    m_Top: 6
+    m_Bottom: 0
+  LevelDistance: 0
+  BackgroundColor: {r: 0.4716981, g: 0.2850058, b: 0.015574946, a: 1}
+  NodeMargin:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  NodePadding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  NodeFont: {fileID: 12800000, guid: 2c7611b123e68664f9dc4d88c20eeaae, type: 3}
+  NodeFontSize: 24
+  NodeTextAnchor: 3
+  NormalENodeView:
+    Size: 1
+    EColor:
+      Normal: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+      Hover: {r: 1, g: 1, b: 1, a: 1}
+      Active: {r: 1, g: 0, b: 0, a: 1}
+    ETexture2D:
+      Normal: {fileID: 0}
+      Hover: {fileID: 0}
+      Active: {fileID: 0}
+  SelectedENodeView:
+    Size: 1
+    EColor:
+      Normal: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      Hover: {r: 1, g: 1, b: 1, a: 1}
+      Active: {r: 1, g: 0, b: 0, a: 1}
+    ETexture2D:
+      Normal: {fileID: 0}
+      Hover: {fileID: 0}
+      Active: {fileID: 0}
+  NormalEGlyph:
+    Collapsed: 32
+    Expanded: 32
+    Empty: 32
+    Last: 32
+    NotLast: 32
+    ParentIsLast: 32
+    ParentIsNotLast: 32
+    Font: {fileID: 12800000, guid: 5af246a608a7bf54ead5c34cc420f0da, type: 3}
+    FontSize: 24
+    Width: 25
+    Height: 25
+    Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    CollapsedEColor:
+      Normal: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+      Hover: {r: 1, g: 1, b: 1, a: 1}
+      Active: {r: 1, g: 0, b: 0, a: 1}
+    ExpandedEColor:
+      Normal: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+      Hover: {r: 1, g: 1, b: 1, a: 1}
+      Active: {r: 1, g: 0, b: 0, a: 1}
+    EmptyEColor:
+      Normal: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+      Hover: {r: 1, g: 1, b: 1, a: 1}
+      Active: {r: 1, g: 0, b: 0, a: 1}
+    LastColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    NotLastColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    ParentIsLastColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    ParentIsNotLastColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    CollapsedETexture2D:
+      Normal: {fileID: 2800000, guid: 12965fc8fc279e84ba690bf914a2afea, type: 3}
+      Hover: {fileID: 2800000, guid: 4a9497f2e656a554eae5cece2ddf371c, type: 3}
+      Active: {fileID: 2800000, guid: 3f41f7d9bafbda54ea375c864a91e8db, type: 3}
+    ExpandedETexture2D:
+      Normal: {fileID: 2800000, guid: 8e73c9afe36bd1e4fa019b2129234a83, type: 3}
+      Hover: {fileID: 2800000, guid: 87cf7dd1c3d6e1749b755081a40455e3, type: 3}
+      Active: {fileID: 2800000, guid: 969904b2720038940980baa5fe0302b6, type: 3}
+    EmptyETexture2D:
+      Normal: {fileID: 2800000, guid: 2ea17e8ff1ba8c741a22b19f658c7032, type: 3}
+      Hover: {fileID: 2800000, guid: 1e0ec66258fa911469fce72a9993f315, type: 3}
+      Active: {fileID: 2800000, guid: 277b36286beb68f4792f88c3f8936eeb, type: 3}
+    LastTexture2D: {fileID: 0}
+    NotLastTexture2D: {fileID: 0}
+    ParentIsLastTexture2D: {fileID: 0}
+    ParentIsNotLastTexture2D: {fileID: 0}
+  SelectedEGlyph:
+    Collapsed: 32
+    Expanded: 32
+    Empty: 32
+    Last: 32
+    NotLast: 32
+    ParentIsLast: 32
+    ParentIsNotLast: 32
+    Font: {fileID: 12800000, guid: 5af246a608a7bf54ead5c34cc420f0da, type: 3}
+    FontSize: 24
+    Width: 25
+    Height: 25
+    Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    CollapsedEColor:
+      Normal: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      Hover: {r: 1, g: 1, b: 1, a: 1}
+      Active: {r: 1, g: 0, b: 0, a: 1}
+    ExpandedEColor:
+      Normal: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      Hover: {r: 1, g: 1, b: 1, a: 1}
+      Active: {r: 1, g: 0, b: 0, a: 1}
+    EmptyEColor:
+      Normal: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      Hover: {r: 1, g: 1, b: 1, a: 1}
+      Active: {r: 1, g: 0, b: 0, a: 1}
+    LastColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    NotLastColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    ParentIsLastColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    ParentIsNotLastColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    CollapsedETexture2D:
+      Normal: {fileID: 2800000, guid: 12965fc8fc279e84ba690bf914a2afea, type: 3}
+      Hover: {fileID: 2800000, guid: 4a9497f2e656a554eae5cece2ddf371c, type: 3}
+      Active: {fileID: 2800000, guid: 3f41f7d9bafbda54ea375c864a91e8db, type: 3}
+    ExpandedETexture2D:
+      Normal: {fileID: 2800000, guid: 8e73c9afe36bd1e4fa019b2129234a83, type: 3}
+      Hover: {fileID: 2800000, guid: 87cf7dd1c3d6e1749b755081a40455e3, type: 3}
+      Active: {fileID: 2800000, guid: 969904b2720038940980baa5fe0302b6, type: 3}
+    EmptyETexture2D:
+      Normal: {fileID: 2800000, guid: d095ea6e64bed4c47812d41068c1c681, type: 3}
+      Hover: {fileID: 2800000, guid: c11e030a3664832439553e805c6ad26c, type: 3}
+      Active: {fileID: 2800000, guid: f00bb3df7d8f75040aa524e2100ba298, type: 3}
+    LastTexture2D: {fileID: 0}
+    NotLastTexture2D: {fileID: 0}
+    ParentIsLastTexture2D: {fileID: 0}
+    ParentIsNotLastTexture2D: {fileID: 0}
+  LastNodeId: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1373,7 @@ MonoBehaviour:
   treeviews:
   - {fileID: 189594448}
   - {fileID: 613774067}
+  - {fileID: 909249277}
 --- !u!1 &1379109532
 GameObject:
   m_ObjectHideFlags: 0
