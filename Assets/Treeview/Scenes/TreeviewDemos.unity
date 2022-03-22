@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab92b9f6c0c39246aa3eb09cf82fdbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayInInspector: 0
+  DisplayInInspector: 1
   DisplayInGame: 1
   DisplayInScene: 1
   X: 10
@@ -1304,7 +1304,7 @@ MonoBehaviour:
     NotLastTexture2D: {fileID: 0}
     ParentIsLastTexture2D: {fileID: 0}
     ParentIsNotLastTexture2D: {fileID: 0}
-  LastNodeId: 1
+  LastNodeId: 3
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
