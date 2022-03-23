@@ -1,7 +1,7 @@
 ﻿using System;
 
 /// <summary>
-/// Сериализуемая часть Node.
+/// The serializable part of Node.
 /// </summary>
 [Serializable]
 public struct NodeData

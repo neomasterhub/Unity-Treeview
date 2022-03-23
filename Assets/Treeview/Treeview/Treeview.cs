@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Tree model and component.
+/// </summary>
 [Serializable]
 public class Treeview : MonoBehaviour//, ISerializationCallbackReceiver
 {
     /// <summary>
-    /// Префикс имен сущностей в контексте древа.
+    /// The prefix of entity names in the context of the tree.<br/>
+    /// Used to count all entities of the tree.
     /// </summary>
     public const string NamePrefix = "Treeview";
 
-    #region Inspector buttons default style 
+    #region Inspector buttons style
     private GUIStyle defaultButtonStyle;
+
+    /// <summary>
+    /// Used to prevent the custom style of buttons in the tree from being applied to control buttons in the inspector.
+    /// </summary>
     public GUIStyle DefaultButtonStyle
     {
         get
@@ -25,11 +33,15 @@ public class Treeview : MonoBehaviour//, ISerializationCallbackReceiver
             return defaultButtonStyle;
         }
     }
+
+    /// <summary>
+    /// If true, the custom button style in the tree will not be applied to buttons in the inspector.
+    /// </summary>
     public bool SavedDefaultButtonStyle => defaultButtonStyle != null;
 
     /// <summary>
-    /// Сохраняет стиль по умолчанию для кнопок инспектора.<br/>
-    /// Вызывается только в On...GUI().
+    /// Retains the default style for inspector buttons.<br/>
+    /// Called only in On...GUI() before the tree is drawn.
     /// </summary>
     public void SaveDefaultButtonStyle()
     {
@@ -45,6 +57,7 @@ public class Treeview : MonoBehaviour//, ISerializationCallbackReceiver
     private Texture2D defaultBackground;
     private GUIStyle backgroundStyle;
     private Rect backgroundRect = new Rect();
+    
     public Texture2D Background
     {
         get
@@ -104,6 +117,9 @@ public class Treeview : MonoBehaviour//, ISerializationCallbackReceiver
         }
     }
 
+    /// <summary>
+    /// Destroys all textures of the component.
+    /// </summary>
     public void DestroyTextures()
     {
         Destroy(background);
@@ -113,7 +129,7 @@ public class Treeview : MonoBehaviour//, ISerializationCallbackReceiver
     }
     #endregion
 
-    #region Node
+    #region Nodes
     private Node root;
     public Node Root
     {
@@ -160,24 +176,39 @@ public class Treeview : MonoBehaviour//, ISerializationCallbackReceiver
     public EGlyph NormalEGlyph = new EGlyph(new Color(0.8f, 0.8f, 0.8f), Color.white, Color.red);
     public EGlyph SelectedEGlyph = new EGlyph(Color.yellow, Color.white, Color.red);
     #endregion
-    
+
     #region Serialization
+    /// <summary>
+    /// Id of the last created node.
+    /// </summary>
     [Readonly] public int LastNodeId;
+
+    /// <summary>
+    /// Serializable part of a tree.
+    /// </summary>
     private List<NodeData> nodeDatas = new List<NodeData>();
 
-    private void Serialize(Node node)
+    /// <summary>
+    /// Serializes a tree.
+    /// </summary>
+    /// <param name="root">The root of the tree to be serialized.</param>
+    private void Serialize(Node root)
     {
-        if (node == null)
+        if (root == null)
         {
-            node = new Node("Root", this);
+            root = new Node("Root", this);
         }
 
-        nodeDatas.Add(new NodeData(node));
-        node.Children.ForEach(c => Serialize(c));
+        nodeDatas.Add(new NodeData(root));
+        root.Children.ForEach(c => Serialize(c));
 
         Debug.Log("Treeview serialized.");
     }
 
+    /// <summary>
+    /// Deserializes a tree.
+    /// </summary>
+    /// <param name="root">The root of the tree to be restored.</param>
     private void Deserialize(Node root)
     {
         // Controls the uniqueness of any Id.
@@ -193,30 +224,42 @@ public class Treeview : MonoBehaviour//, ISerializationCallbackReceiver
             }
         }
 
-        root = nd.Values.First(x => x.Parent == null); // Root always exists.
+        root = nd.Values.First(x => x.Parent == null);
 
         Debug.Log("Treeview deserialized.");
     }
 
+    /// <summary>
+    /// Serializes the tree.
+    /// </summary>
     public void OnBeforeSerialize()
     {
         nodeDatas.Clear();
         Serialize(root);
     }
 
+    /// <summary>
+    /// Deserializes the tree.
+    /// </summary>
     public void OnAfterDeserialize()
     {
         Deserialize(root);
     }
-
     #endregion
-    
+
+    /// <summary>
+    /// The position to use display the tree container.
+    /// </summary>
     private Vector2 scrollPosition;
+
+    /// <summary>
+    /// Displays the tree container and the root with all its descendants.
+    /// </summary>
     public void Display()
     {
         if (NodeFont == null)
         {
-            TreeviewHelper.DisplayWarningMessage("Node font not set.");
+            TreeviewPrinter.DisplayWarningMessage("Node font not set.");
             return;
         }
 
@@ -229,6 +272,9 @@ public class Treeview : MonoBehaviour//, ISerializationCallbackReceiver
         GUILayout.EndScrollView();
     }
 
+    /// <summary>
+    /// Displays the tree when DisplayInGame and SavedDefaultButtonStyle are set to true.
+    /// </summary>
     private void OnGUI()
     {
         if (DisplayInGame && SavedDefaultButtonStyle)
@@ -241,20 +287,29 @@ public class Treeview : MonoBehaviour//, ISerializationCallbackReceiver
         }
     }
 
+    /// <summary>
+    /// Destroys the component and counts all resources with type Texture2D (for performance analysis).
+    /// </summary>
     private void OnDestroy()
     {
-        // Texture2D[] ts = Resources.FindObjectsOfTypeAll<Texture2D>();
-        // int tsMaxId = ts.Max(t => t.GetInstanceID());
-        // int tsCount = ts.Length;
+        Texture2D[] ts = Resources.FindObjectsOfTypeAll<Texture2D>();
+        int tsMaxId = ts.Max(t => t.GetInstanceID());
+        int tsCount = ts.Length;
 
-        // Debug.Log($"textures: {{ max Id: {tsMaxId}, count: {tsCount} }}");
+        Debug.Log($"textures: {{ max Id: {tsMaxId}, count: {tsCount} }}");
     }
 
+    /// <summary>
+    /// Disables the component and deletes all of its textures.
+    /// </summary>
     private void OnDisable()
     {
         DestroyTextures();
     }
 
+    /// <summary>
+    /// Resets the component to its default state, deletes SelectedNode and all descendants of the root.
+    /// </summary>
     private void Reset()
     {
         SelectedNode = null;

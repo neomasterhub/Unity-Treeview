@@ -3,22 +3,36 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Shows examples of trees.
+/// </summary>
 public class Slider : MonoBehaviour
 {
+    /// <summary>
+    /// Game objects with Treeview and TreeviewExample components.
+    /// </summary>
     public List<GameObject> treeviews;
+
     private int index = 0;
     private int maxIndex = 0;
     private Button nextButton;
     private Button previousButton;
-    private Text header;
+    private Text treeviewName;
+
+    /// <summary>
+    /// Last event message.
+    /// </summary>
     private Text log;
 
+    /// <summary>
+    /// Initializes all components and shows the first tree.
+    /// </summary>
     private void Awake()
     {
         Debug.ClearDeveloperConsole();
 
-        header = gameObject.transform.Find("DemoName").GetComponent<Text>();
-        header.text = treeviews.Any() ? treeviews[0].name : "";
+        treeviewName = gameObject.transform.Find("DemoName").GetComponent<Text>();
+        treeviewName.text = treeviews.Any() ? treeviews[0].name : "";
 
         previousButton = gameObject.transform.Find("Previous").GetComponent<Button>();
         previousButton.onClick.AddListener(PreviousButtonClick);
@@ -40,6 +54,9 @@ public class Slider : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Shows the next tree, displays its name and clears the log.
+    /// </summary>
     private void NextButtonClick()
     {
         if (!treeviews.Any())
@@ -51,9 +68,12 @@ public class Slider : MonoBehaviour
         treeviews[index].SetActive(false);
         index = index < maxIndex ? index + 1 : 0;
         treeviews[index].SetActive(true);
-        header.text = treeviews[index].name;
+        treeviewName.text = treeviews[index].name;
     }
 
+    /// <summary>
+    /// Shows the previous tree, displays its name and clears the log.
+    /// </summary>
     private void PreviousButtonClick()
     {
         if (!treeviews.Any())
@@ -65,6 +85,6 @@ public class Slider : MonoBehaviour
         treeviews[index].SetActive(false);
         index = index == 0 ? maxIndex : index - 1;
         treeviews[index].SetActive(true);
-        header.text = treeviews[index].name;
+        treeviewName.text = treeviews[index].name;
     }
 }

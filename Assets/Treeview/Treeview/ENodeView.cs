@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// Variable node view for states "Normal", "Hover", "Active".
+/// </summary>
 [Serializable]
 public class ENodeView
 {

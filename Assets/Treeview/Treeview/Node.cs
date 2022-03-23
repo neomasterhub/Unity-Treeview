@@ -2,15 +2,28 @@
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Tree node model. Contains the minimum of data and methods that are required to realize hierarchical relationships.
+/// </summary>
 public class Node
 {
     public delegate void NodeEventHandler(object sender, NodeEventArgs args);
+
     public const int TextMinLength = 1;
     public const int TextMaxLength = 30;
     public const int DescriptionMaxLength = 50;
 
-    public int Id;
+    /// <summary>
+    /// The generation number starting at 0.<br/>
+    /// <code>
+    /// root - 0
+    /// root.child - 1
+    /// root.child.child - 2
+    /// </code>
+    /// </summary>
     public int Level;
+
+    public int Id;
     public string Text;
     public string Description;
     public Treeview Treeview;
@@ -27,16 +40,17 @@ public class Node
 
     #region Specialized constructors
     /// <summary>
-    /// Создает узел с указанным Id в десериализации.
+    /// Creates a node during deserialization.
     /// </summary>
-    private Node(int id, Treeview treeview)
+    private Node(int id, Treeview treeview, int level = 0)
     {
         Id = id;
         Treeview = treeview;
+        Level = level;
     }
 
     /// <summary>
-    /// Создает корень с Id 1.
+    /// Creates a root with Id 1.
     /// </summary>
     public Node(string text, Treeview treeview)
     {
@@ -47,8 +61,9 @@ public class Node
     }
 
     /// <summary>
-    /// Создает ребенка указанному родителю.
+    /// Creates a child node.
     /// </summary>
+    /// <param name="parent">The node that will be the parent of the new node and from which the new node will inherit the event handler.</param>
     public Node(string text, Node parent)
     {
         Treeview = parent.Treeview;
@@ -60,9 +75,8 @@ public class Node
     }
 
     /// <summary>
-    /// Проецирует экземпляр NodeData в Node с родителем.<br/>
-    /// Используется для проекции соответствующих списков в десериализации,<br/>
-    /// из-за чего Id следующего элемента задается полю Treeview.LastNodeId.
+    /// Creates a new node during deserialization.<br/>
+    /// After creating Treeview.LastNodeId becomes equal to the Id of the created node.
     /// </summary>
     public Node(NodeData nodeData, Treeview treeview)
     {
@@ -82,9 +96,9 @@ public class Node
         }
     }
     #endregion
-    
+
     /// <summary>
-    /// Рисует узел с учетом выбранности и все его потомки рекурсивно.
+    /// Draws the node and all its descendants.
     /// </summary>
     public void Display()
     {
@@ -111,6 +125,14 @@ public class Node
         }
     }
 
+    /// <summary>
+    /// Adds a new node.<br/>
+    /// The whole tree can be created by a sequence of calls to this method.<br/>
+    /// The next method in the sequence will be called for the node defined by the second argument.<br/>
+    /// The first method of the sequence is called for the root node, which always exists in the tree (the smallest tree).
+    /// </summary>
+    /// <param name="returnedNode">Defines the node to be returned.</param>
+    /// <returns>Root, parent (default) or newly created. Defined via returnedNode.</returns>
     public Node AddChild(string text, ReturnedNode returnedNode = ReturnedNode.Parent)
     {
         Node child = new Node(text, this);

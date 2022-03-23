@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// Variable glyph for states "Normal", "Hover", "Active".
+/// </summary>
 [Serializable]
 public class EGlyph
 {

@@ -1,11 +1,14 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Creates the inspector for Treeview, displays the tree on the scene and on the inspector.
+/// </summary>
 [CustomEditor(typeof(Treeview))]
 public class TreeviewEditor : Editor
 {
     /// <summary>
-    /// Добавляет в заголовок Unity меню "Neomaster" с пунктом "Add Treeview".
+    /// Adds the menu to the program header.
     /// </summary>
     [MenuItem("Neomaster/Add Treeview")]
     public static void AddTreeview()
@@ -23,8 +26,7 @@ public class TreeviewEditor : Editor
     }
 
     /// <summary>
-    /// Рисует древо в окне Scene.<br/>
-    /// Не рисует во время игры.
+    /// Displays the tree on the scene, but not during playing.
     /// </summary>
     private void OnSceneGUI()
     {
@@ -42,9 +44,9 @@ public class TreeviewEditor : Editor
     }
 
     /// <summary>
-    /// Создает кнопки интерфейса в Inspector.<br/>
-    /// Перерисовывает древо после изменения.<br/>
-    /// Кнопки перерисовываются после наведения мыши на Inspector.
+    /// Displays the tree and control buttons on the inspector.<br/>
+    /// Redraws the tree after the change.<br/>
+    /// Buttons are redrawn after hovering the mouse over the inspector.
     /// </summary>
     public override void OnInspectorGUI()
     {
@@ -69,7 +71,7 @@ public class TreeviewEditor : Editor
             tv.Display();
         }
 
-        if (changed /* && mouse enter */)
+        if (changed /* && the mouse is hovering over the inspector */)
         {
             Repaint();
             SceneView.RepaintAll();
@@ -77,12 +79,12 @@ public class TreeviewEditor : Editor
     }
 
     /// <summary>
-    /// Создает элементы интерфейса выбранного узла и применяет их новые значения.
+    /// Creates the controls of the selected node and applies their new values.
     /// </summary>
-    /// <returns>true, если выбранный узел изменен.</returns>
+    /// <returns>true if any node is selected.</returns>
     public bool SelectedNodeEditor(Treeview treeview)
     {
-        TreeviewHelper.InspectorHeader("Selected Node");
+        TreeviewPrinter.InspectorHeader("Selected Node");
 
         if (treeview.SelectedNode == null)
         {
@@ -92,10 +94,8 @@ public class TreeviewEditor : Editor
 
         bool result = false;
 
-        #region Controls
+        #region Controls in order
         GUIStyle textFieldStyle = GUI.skin.textField.TunedCopy();
-
-        // п/п
 
         string text = EditorGUILayout.TextField("Text", treeview.SelectedNode.Text, textFieldStyle);
 
@@ -109,7 +109,7 @@ public class TreeviewEditor : Editor
         bool sizeApplied = EditorGUILayout.Toggle("Apply Individual Size", treeview.SelectedNode.SizeApplied, GUI.skin.toggle.TunedCopy());
         #endregion
 
-        #region Changes
+        #region Detecting changes
         if (treeview.SelectedNode.Text != text)
         {
             result = true;
